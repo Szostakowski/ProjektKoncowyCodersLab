@@ -1,13 +1,14 @@
 package pages;
 
+
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+
+import java.util.List;
 
 
 public class MyStoreAddCompanyDataPage {
@@ -50,6 +51,10 @@ public class MyStoreAddCompanyDataPage {
     @FindBy(name = "phone")
     private WebElement phoneInput;
 
+    @FindBy(xpath = "//article")
+    private List<WebElement> blockList;
+
+
 
     public MyStoreAddCompanyDataPage(WebDriver driver) {
         this.driver = driver;
@@ -58,6 +63,7 @@ public class MyStoreAddCompanyDataPage {
 
 
     public void signIn() {
+
         toSignIn.click();
     }
 
@@ -73,7 +79,6 @@ public class MyStoreAddCompanyDataPage {
     }
 
     public String getLoggedUser() {
-
         return user.getText();
     }
 
@@ -118,6 +123,18 @@ public class MyStoreAddCompanyDataPage {
         phoneInput.sendKeys(phone);
         phoneInput.submit();
     }
+
+    public void findLastBlock() {
+        WebElement blockToCheck = blockList.get(blockList.size() - 1);
+        System.out.println("Ostatnio dodane:");
+        System.out.println(blockToCheck.getText());
+    }
+
+    public String getLastaddressTxt(){
+        WebElement blockToCheck = blockList.get(blockList.size() - 1);
+        return blockToCheck.getText();
+    }
+
 }
 
 

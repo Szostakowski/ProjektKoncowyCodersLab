@@ -7,6 +7,7 @@ Feature: Add and delete company data
     And check if Sign in is correct
     And go to "add first address"
     And add data to form get <alias>, <address>, <city>, <zipCode>, <country>, <phone>
+    And check that every thing is okay
 
 
     Examples:

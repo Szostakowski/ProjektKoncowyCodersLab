@@ -5,19 +5,16 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import dataFiles.UsersLogIn;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.MyStoreAddCompanyDataPage;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class MyStoreAddCompanyDataStep {
 
     private WebDriver driver;
+    private String alias;
 
 // użycie metody Gherkin
 
@@ -26,7 +23,7 @@ public class MyStoreAddCompanyDataStep {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.get(url);
     }
 
@@ -37,7 +34,7 @@ public class MyStoreAddCompanyDataStep {
     }
 
     @And("log in to customer account")
-    public void logIn(){
+    public void logIn() {
         MyStoreAddCompanyDataPage inputLogInData = new MyStoreAddCompanyDataPage(this.driver);
         inputLogInData.logInData(UsersLogIn.getUserLog(), "pas123"); // prawidlowe 123
     }
@@ -57,30 +54,34 @@ public class MyStoreAddCompanyDataStep {
         MyStoreAddCompanyDataPage goToAddAddress = new MyStoreAddCompanyDataPage(this.driver);
         goToAddAddress.goToAddressData();
     }
-//        URL url = new URL("https://prod-kurs.coderslab.pl/index.php?controller=address");
-//        Assert.assertEquals("https://prod-kurs.coderslab.pl/index.php?controller=address", url.getProtocol());
-
 
     @And("add data to form get (.*), (.*), (.*), (.*), (.*), (.*)")
     public void addDataToForm(String alias, String address, String city, String zipCode, String country, String phone) {
         MyStoreAddCompanyDataPage addComapnyData = new MyStoreAddCompanyDataPage(this.driver);
 
         addComapnyData.addAlias(alias);
+        this.alias = alias;
+
         addComapnyData.addAddress(address);
         addComapnyData.addCity(city);
         addComapnyData.addZipCode(zipCode);
         addComapnyData.addCountry(country);
         addComapnyData.addPhone(phone);
-
-
     }
 
-//
-//        WebElement clickS = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/form/footer/button"));
-//        clickS.click();
+    @And("check that every thing is okay")
+    public void checkLastBlock(){
+        MyStoreAddCompanyDataPage checking = new MyStoreAddCompanyDataPage(this.driver);
+        checking.findLastBlock();
+        String acctualText = checking.getLastaddressTxt();
+
+        Assert.assertTrue(acctualText.contains("Rafal Szostakowski"));
+        Assert.assertTrue(acctualText.contains(this.alias));
+    }
+
+}
 
 
 
 
- }
 
