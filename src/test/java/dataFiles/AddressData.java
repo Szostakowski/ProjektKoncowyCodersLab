@@ -14,7 +14,7 @@ public class AddressData {
     }
 
     static List<String> city = Arrays.asList
-            ("Shire", "Gotham City", "Pcin Dolny", "Przemyśl (się)", "Śródziemiedzin");
+            ("Shire", "Gotham City", "Pcin Dolny", "Przemysl (sie)", "Srodziemiedzin");
     String getCity(){
         return city.get(chose);
     }

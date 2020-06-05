@@ -11,8 +11,8 @@ Feature: Add and delete company data
 
 
     Examples:
-      | alias           | address           |    city           |  zipCode    |  country      |   phone      |
-      | Tester Sp.zo.o  | Progamerska 2/5   |  Śródziemiedzin   |  00-666     | United Kingdom|  +333228899  |
+      | alias           | address           |    city           |  zipCode    |  country       |   phone      |
+      | Tester Sp.zo.o  | Progamerska 1     |  Srodziemiedzin   |  00-666     | United Kingdom |  +333228899  |
 
 
 

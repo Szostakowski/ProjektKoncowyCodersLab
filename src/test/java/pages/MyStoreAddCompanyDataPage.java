@@ -2,6 +2,7 @@ package pages;
 
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,6 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 
 public class MyStoreAddCompanyDataPage {
@@ -24,14 +26,16 @@ public class MyStoreAddCompanyDataPage {
     @FindBy(name = "password")
     private WebElement passwordInput;
 
-    @FindBy(xpath = "//*[@id=\"submit-login\"]")
+    @FindBy(id = "submit-login")
     private WebElement clickLogIn;
 
     @FindBy(xpath = "//*[@id=\"_desktop_user_info\"]/div/a[2]/span")
     private WebElement user;
 
-    @FindBy(xpath = "//*[@id=\"address-link\"]/span")
-    private WebElement toAddress;
+
+    @FindBy(xpath = "//span[@class='link-item']")
+    public List<WebElement> toFormOrToList;
+
 
     @FindBy(name = "alias")
     private WebElement aliasInput;
@@ -52,8 +56,7 @@ public class MyStoreAddCompanyDataPage {
     private WebElement phoneInput;
 
     @FindBy(xpath = "//article")
-    private List<WebElement> blockList;
-
+    public List<WebElement> blockList;
 
 
     public MyStoreAddCompanyDataPage(WebDriver driver) {
@@ -63,7 +66,6 @@ public class MyStoreAddCompanyDataPage {
 
 
     public void signIn() {
-
         toSignIn.click();
     }
 
@@ -87,9 +89,28 @@ public class MyStoreAddCompanyDataPage {
         System.out.println("Logowanie poprawne");
     }
 
-    public void goToAddressData() {
-        toAddress.click();
+
+
+
+    public void goToAdd() {
+            toFormOrToList.get(1).click();
+
+//        try {
+//            toFormOrToList.get(1).click();
+//        } catch (NoSuchElementException e) {
+//            driver.findElement(By.partialLinkText("ADD")).click();
+//        }
+//
+//        WebElement find = driver.findElement(By.xpath("//*[@id=\"content\"]/div[4]/a/span"));
+//        if (find.isEnabled()) {
+//            find.click();
+//            System.out.println("Coś już było");
+//        } else {
+//            System.out.println("Wprowadzono pierwszy adres");
+//        }
     }
+
+
 
 
     public void addAlias(String alias) {

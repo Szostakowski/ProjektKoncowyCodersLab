@@ -15,6 +15,7 @@ public class MyStoreAddCompanyDataStep {
 
     private WebDriver driver;
     private String alias;
+    private String address;
 
 // użycie metody Gherkin
 
@@ -52,7 +53,7 @@ public class MyStoreAddCompanyDataStep {
     @And("go to \"add first address\"")
     public void clickAddAddress() {
         MyStoreAddCompanyDataPage goToAddAddress = new MyStoreAddCompanyDataPage(this.driver);
-        goToAddAddress.goToAddressData();
+        goToAddAddress.goToAdd();
     }
 
     @And("add data to form get (.*), (.*), (.*), (.*), (.*), (.*)")
@@ -63,6 +64,8 @@ public class MyStoreAddCompanyDataStep {
         this.alias = alias;
 
         addComapnyData.addAddress(address);
+        this.address = address;
+
         addComapnyData.addCity(city);
         addComapnyData.addZipCode(zipCode);
         addComapnyData.addCountry(country);
@@ -70,13 +73,16 @@ public class MyStoreAddCompanyDataStep {
     }
 
     @And("check that every thing is okay")
-    public void checkLastBlock(){
+    public void checkLastBlock() {
         MyStoreAddCompanyDataPage checking = new MyStoreAddCompanyDataPage(this.driver);
         checking.findLastBlock();
         String acctualText = checking.getLastaddressTxt();
 
-        Assert.assertTrue(acctualText.contains("Rafal Szostakowski"));
         Assert.assertTrue(acctualText.contains(this.alias));
+        System.out.println(this.alias+": dodano poprawnie");
+
+        Assert.assertTrue(acctualText.contains(this.address));
+        System.out.println(this.address+": dodano poprawnie");
     }
 
 }
