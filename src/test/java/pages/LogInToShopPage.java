@@ -71,47 +71,4 @@ public class LogInToShopPage {
 
 
 
-//    @FindBy(xpath = "//div[@class='regular-price']/span")
-//    private WebElement regularPrice;
-//
-//
-//    static String regularPriceString;
-//    static double regularPriceDouble;
-//
-//    public double getRegularPrice() {
-//        regularPriceString = regularPrice.getAttribute("content");
-//        regularPriceDouble = Double.parseDouble(regularPriceString);
-//        return regularPriceDouble;
-//    }
-//
-//
-//    @FindBy(xpath = "//div[@class='discount discount-percentage']/span")
-//    private WebElement discount;
-//
-//
-//    static String discountString;
-//    static double discountDouble;
-//
-//    public double getDiscount() {
-//        discountString = discount.getAttribute("content");
-//        discountDouble = Double.parseDouble(discountString);
-//        return discountDouble;
-//    }
-//
-//
-//    @FindBy(xpath = "//div[@class='current-price']/span")
-//    private WebElement priceAfterDiscount;
-//
-//
-//    static String priceAfterDiscString;
-//    static double priceAfterDiscDouble;
-//
-//    public double getPriceAfterDiscount() {
-//        priceAfterDiscString = priceAfterDiscount.getAttribute("content");
-//        priceAfterDiscDouble = Double.parseDouble(priceAfterDiscString);
-//        return priceAfterDiscDouble;
-//    }
-
-
-
 

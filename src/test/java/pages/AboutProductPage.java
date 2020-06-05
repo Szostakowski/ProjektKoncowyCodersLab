@@ -37,6 +37,8 @@ public class AboutProductPage {
         System.out.println("Wybrano rozmiar: "+size);
     }
 
+
+
     public void productQuantity(String quantity) {
         productQuantity.clear();
         productQuantity.sendKeys(quantity);
