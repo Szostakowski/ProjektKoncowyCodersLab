@@ -56,6 +56,7 @@ public class MyStoreAddCompanyDataStep {
         goToAddAddress.goToAdd();
     }
 
+
     @And("add data to form get (.*), (.*), (.*), (.*), (.*), (.*)")
     public void addDataToForm(String alias, String address, String city, String zipCode, String country, String phone) {
         MyStoreAddCompanyDataPage addComapnyData = new MyStoreAddCompanyDataPage(this.driver);
@@ -79,11 +80,12 @@ public class MyStoreAddCompanyDataStep {
         String acctualText = checking.getLastaddressTxt();
 
         Assert.assertTrue(acctualText.contains(this.alias));
-        System.out.println(this.alias+": dodano poprawnie");
+        System.out.println(this.alias + ": dodano poprawnie");
 
         Assert.assertTrue(acctualText.contains(this.address));
-        System.out.println(this.address+": dodano poprawnie");
+        System.out.println(this.address + ": dodano poprawnie");
     }
+
 
 }
 

@@ -15,4 +15,5 @@ public class CompanyData {
     // Tabica z numerami VAT
     public static String[] vatNumber = {"525-55-55-555", "666-66-66-666", "777-77-77-777", "232-22-33-232"};
 
+
 }

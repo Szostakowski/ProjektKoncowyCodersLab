@@ -13,6 +13,7 @@ public class AddressData {
         return address.get(chose);
     }
 
+
     static List<String> city = Arrays.asList
             ("Shire", "Gotham City", "Pcin Dolny", "Przemysl (sie)", "Srodziemiedzin");
     String getCity(){
@@ -25,6 +26,5 @@ public class AddressData {
     String getZipCode(){
         return zipCode.get(chose);
     }
-
 
 }
